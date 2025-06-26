@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit Option</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body class="bg-light">
+
+<nav class="navbar navbar-dark bg-dark">
+  <div class="container-fluid">
+    <a href="/admin/dashboard" class="navbar-brand">Back to Dashboard</a>
+  </div>
+</nav>
+
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card shadow">
+                <div class="card-body">
+                    <h4 class="mb-4">Edit Option</h4>
+                    <form method="post" enctype="multipart/form-data">
+                        <div class="mb-3">
+                            <label class="form-label">Option Name</label>
+                            <input type="text" name="name" class="form-control" required value="{{ data.first().name }}">
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Current Image</label><br>
+                            <img src="{{ url_for('static', filename='pics/' + data.first().imageid) }}" style="width: 60px; height: 60px;" class="rounded">
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">New Image (optional)</label>
+                            <input type="file" name="imageid" class="form-control">
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Caption</label>
+                            <textarea name="caption" class="form-control" rows="3">{{ data.first().caption }}</textarea>
+                        </div>
+                        <button type="submit" class="btn btn-success">Save Changes</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,272 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <style>
+        body {
+
+        }
+
+    </style>
+  </head>
+  <body>
+
+    <div id="overlay" class="fixed top-0 left-0 w-full h-full bg-black opacity-50 z-40 hidden"></div>
+
+    <div id="mobileMenu" class="flex flex-col w-[80%] h-[100vh] bg-white left-[-100%] justify-start items-center fixed top-0 z-50 transition-all duration-300 md:hidden rounded-r-3xl">
+    <ul class="w-full flex flex-col items-end justify-start gap-4 text-[#051748] text-xl mt-[40px] relative h-[100%]">
+        <h1 class="text-xl font-bold pr-[13px]">
+            هتل آپارتمان لوتوس پارسیان
+        </h1>
+        <li class="border-b-1 border-[#0000001F] w-[100%] p-[13px] text-right"><a href="#" class="text-[#051748]">خانه</a></li>
+        <li class="border-b-1 border-[#0000001F] w-[100%] p-[13px] text-right"><a href="#" class="text-[#051748]">وبلاگ</a></li>
+        <li class="border-b-1 border-[#0000001F] w-[100%] p-[13px] text-right"><a href="#" class="text-[#051748]">ارتباط باما</a></li>
+        <li>
+            <div class="w-[100%] pl-[10px] flex justify-end items-center absolute bottom-3 left-[-45%]">
+                <button class="p-[10px] ring-2 ring-[#946934] text-[#946934] rounded-2xl w-[150px] cursor-pointer">
+                    رزرو آنلاین
+                </button>
+            </div>
+        </li>
+        <li>
+        </li>
+    </ul>
+</div>
+
+<div class="flex md:hidden w-[100%] justify-between items-center p-4 bg-white" dir="ltr">
+    <div class="w-[20%] flex justify-center items-center">
+        <button onclick="openMenu()">
+            <svg xmlns="http://www.w3.org/2000/svg" width="300" height="300" class="w-[24px] h-[24px] text-[#946934]" viewBox="0 0 100 100">
+                <path fill="currentColor" d="M17.563 30.277h.012a2.27 2.27 0 0 0 2.246 2.267v.002H80.18v-.001a2.27 2.27 0 0 0 2.259-2.268h.01V19.818a2.27 2.27 0 0 0-2.269-2.265H19.821a2.27 2.27 0 0 0-2.269 2.269c0 .039.01.076.012.115zm62.616 12.227H19.821a2.27 2.27 0 0 0-2.269 2.269c0 .039.01.076.012.115v10.34h.012a2.27 2.27 0 0 0 2.246 2.267v.002h60.359v-.001a2.27 2.27 0 0 0 2.259-2.268h.01V44.769a2.27 2.27 0 0 0-2.271-2.265m0 24.95H19.821a2.27 2.27 0 0 0-2.269 2.269c0 .039.01.076.012.115v10.34h.012a2.27 2.27 0 0 0 2.246 2.267v.002h60.359v-.001a2.27 2.27 0 0 0 2.259-2.269h.01V69.718a2.27 2.27 0 0 0-2.271-2.264"/>
+            </svg>
+        </button>
+    </div>
+    <div class="w-[30%] flex justify-center items-center mr-[20px] text-[14px]">
+        <h1 class="text-[#051748] font-bold text-nowrap">
+            لوتوس پارسیان
+        </h1>
+        <img src="{{ url_for('static', filename='./assets/logo.png') }}" class="w-[24px] h-[24px]" />
+    </div>
+</div>
+
+<!-- header pc -->
+<div class="w-[100%] md:flex hidden justify-center p-[20px] pr-[75px] pl-[81px] sticky top-0 z-40 bg-white" dir="rtl">
+    <div class="w-[50%] flex justify-start items-center">
+        <img src="{{url_for('static' , filename='assets/logo.png')}}" class="w-[50px] h-[50px]" />
+        <h1 class="text-3xl font-bold mr-[10px] text-[#051748]">
+            لوتوس پارسیان
+        </h1>
+    </div>
+    <div class="w-[50%] flex justify-around items-center">
+        <div class="w-[80%] flex justify-end items-center pl-[25px]">
+            <div class="p-[10px] flex justify-center items-center">
+                <a href="#" class="text-bolder">
+                    ارتباط باما
+                </a>
+            </div>
+            <div class="p-[10px] flex justify-center items-center">
+                <a href="#" class="text-bolder">
+                    ارتباط باما
+                </a>
+            </div>
+            <div class="p-[10px] flex justify-center items-center">
+                <a href="#" class="text-bolder">
+                    وبلاگ
+                </a>
+            </div>
+        </div>
+        <button class="p-[10px] ring-2 ring-[#946934] text-[#946934] rounded-2xl w-[150px] cursor-pointer">
+            رزرو آنلاین
+        </button>
+    </div>
+</div>
+    <!-- phone -->
+        <div class="w-[100%] md:hidden flex justify-center items-center mt-[15px] relative" >
+        <div class="w-[80%] h-[80%] flex justify-center items-center">
+            <img src="{{url_for('static' , filename='assets/mainphone.png')}}" class="rounded-[20px] w-[100%] h-[100%]" />
+        </div>
+        <div class="w-[75%] h-[fit-content] pt-[10px] pb-[10px] pr-[16px] pl-[16px] bg-[#ffffffcf] shadow-xl absolute rounded-2xl bottom-[-100px] backdrop-blur-sm flex justify-center flex-col" dir="rtl" >
+            <div class="flex justify-center items-center w-[100%]">
+                <div class="w-[50%] flex flex-col justify-center items-center">
+                    <div class="w-[100%] flex justify-start items-center" dir="rtl">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="300" height="300" class="w-[20px] h-[20px] text-[#787878]"  viewBox="0 0 15 15"><path fill="currentColor" d="M5.117 2.818C5.77 2.266 6.652 2 7.5 2s1.73.266 2.383.818C10.508 3.346 11 4.2 11 5.568c0 .372-.154.956-.49 1.723c-.324.743-.775 1.56-1.267 2.367a48 48 0 0 1-1.761 2.652a40 40 0 0 1-1.763-2.687c-.485-.814-.926-1.636-1.243-2.375C4.147 6.482 4 5.912 4 5.568c0-1.368.492-2.222 1.117-2.75m2.99 10.337C9.46 11.263 12 7.542 12 5.568C12 2.288 9.577 1 7.5 1S3 2.288 3 5.568c0 1.881 2.475 5.69 3.868 7.6c.254.348.472.633.632.832l.197-.273z"/></svg>
+                        <span class="text-[#787878] text-[12px]">
+                            موقعیت مکانی
+                        </span>
+                    </div>
+                    <div class="w-[100%] flex justify-start items-center" dir="rtl">
+                        <span class="mr-[5px] text-[12px] font-bold w-[60%]">
+                            بین خیابان امام رضا 10 و 12
+                        </span>
+                    </div>
+                </div>
+                <div class="w-[50%] flex flex-col justify-center items-center pr-[28px] border-r border-gray-300">
+                    <div class="w-[100%] flex justify-start items-center" dir="rtl">
+                        <svg width="22" height="20" viewBox="0 0 22 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M17.7071 13.7071L20.3552 16.3552C20.7113 16.7113 20.7113 17.2887 20.3552 17.6448C18.43 19.57 15.3821 19.7866 13.204 18.153L11.6286 16.9714C9.88504 15.6638 8.33622 14.115 7.02857 12.3714L5.84701 10.796C4.21341 8.61788 4.43001 5.56999 6.35523 3.64477C6.71133 3.28867 7.28867 3.28867 7.64477 3.64477L10.2929 6.29289C10.6834 6.68342 10.6834 7.31658 10.2929 7.70711L9.27175 8.72825C9.10946 8.89054 9.06923 9.13846 9.17187 9.34373C10.3585 11.7171 12.2829 13.6415 14.6563 14.8281C14.8615 14.9308 15.1095 14.8905 15.2717 14.7283L16.2929 13.7071C16.6834 13.3166 17.3166 13.3166 17.7071 13.7071Z" stroke="#787878"/>
+                        </svg>
+                        <span class="text-[#787878] text-[12px]">
+                            تماس با ما
+                        </span>
+                    </div>
+                    <div class="w-[100%] flex justify-start items-center" dir="rtl">
+                        <span class="mr-[5px] text-[12px] font-bold w-[60%]">
+                            565989569
+                            09050000088
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <div class="w-[100%] flex justify-center items-center">
+                <button class="p-[15px] mt-[15px] ring-2 flex justify-center items-center text-white bg-[#946934] cursor-pointer w-[100%] h-[28px] text-[12px] rounded-full">
+                    جستجوی اتاق
+                    <svg xmlns="http://www.w3.org/2000/svg" width="300" height="300" class="w-[20px] h-[20px] mr-[10px]" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m21 21l-4.343-4.343m0 0A8 8 0 1 0 5.343 5.343a8 8 0 0 0 11.314 11.314"/></svg>
+                </button>
+            </div>
+        </div>
+    </div>
+    <!-- pc -->
+    <div class="w-[100%] md:flex hidden justify-center items-center mt-[50px] relative" >
+        <div class="w-[90%] h-[80%] flex justify-center items-center">
+            <img src="{{url_for('static' , filename='./assets/mainimage.png')}}" class="rounded-[20px] w-[100%] h-[100%]" />
+        </div>
+        <div class="w-[70%] h-[20%] bg-[#ffffffcf] shadow-xl absolute rounded-2xl bottom-[-35px] backdrop-blur-sm flex justify-center" dir="rtl" >
+            <div class="w-[60%] flex flex-col justify-center items-center">
+                <div class="w-[50%] flex justify-start items-center" dir="rtl">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="300" height="300" class="w-[20px] h-[20px] text-[#787878]"  viewBox="0 0 15 15"><path fill="currentColor" d="M5.117 2.818C5.77 2.266 6.652 2 7.5 2s1.73.266 2.383.818C10.508 3.346 11 4.2 11 5.568c0 .372-.154.956-.49 1.723c-.324.743-.775 1.56-1.267 2.367a48 48 0 0 1-1.761 2.652a40 40 0 0 1-1.763-2.687c-.485-.814-.926-1.636-1.243-2.375C4.147 6.482 4 5.912 4 5.568c0-1.368.492-2.222 1.117-2.75m2.99 10.337C9.46 11.263 12 7.542 12 5.568C12 2.288 9.577 1 7.5 1S3 2.288 3 5.568c0 1.881 2.475 5.69 3.868 7.6c.254.348.472.633.632.832l.197-.273z"/></svg>
+                    <span class="text-[#787878]">
+                        موقعیت مکانی
+                    </span>
+                </div>
+                <div class="w-[50%] flex justify-start items-center" dir="rtl">
+                    <span class="mr-[28px] text-nowrap">
+                        بین خیابان امام رضا 10 و 12
+                    </span>
+                </div>
+            </div>
+            <div class="w-[60%] flex flex-col justify-center items-center">
+                <div class="w-[50%] flex justify-start items-center" dir="rtl">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="300" height="300" class="w-[20px] h-[20px] text-[#787878]"  viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.506 7.96A16.03 16.03 0 0 1 7.96 19.506C5.819 20.051 4 18.21 4 16v-1c0-.552.449-.995.999-1.05a10 10 0 0 0 2.656-.639l1.519 1.52a12.05 12.05 0 0 0 5.657-5.657l-1.52-1.52a10 10 0 0 0 .64-2.656C14.005 4.448 14.448 4 15 4h1c2.208 0 4.05 1.819 3.505 3.96"/></svg>
+                    <span class="text-[#787878]">
+                         تماس با ما
+                    </span>
+                </div>
+                <div class="w-[50%] flex justify-start items-center" dir="rtl">
+                    <span class="mr-[28px] text-nowrap">
+                        565989569-09050000088
+                    </span>
+                </div>
+            </div>
+             <div class="w-[100%] flex justify-center items-center">
+                <button class="p-[10px] ring-2 flex justify-center items-center text-white bg-[#946934] rounded-2xl w-[150px] cursor-pointer">
+                    جستجوی اتاق
+                    <svg xmlns="http://www.w3.org/2000/svg" width="300" height="300" class="w-[24px] h-[24px] mr-[10px]" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m21 21l-4.343-4.343m0 0A8 8 0 1 0 5.343 5.343a8 8 0 0 0 11.314 11.314"/></svg>
+                </button>
+            </div>
+        </div>
+    </div>
+    <!-- phone -->
+    <!-- pc -->
+     <div class="w-[100%] flex flex-col justify-center items-center mt-[200px] md:mt-[100px]">
+        <h1 class="w-[130px] md:w-[100%] text-center text-[14px] md:text-[36px] font-[700] mr-[10px] text-[#051748]">
+            همه چیز برای استراحت شما فراهم شده
+        </h1>
+     </div>
+     <div class="w-[100%] relative flex flex-wrap justify-center items-center mt-[80px]">
+        <img src="{{url_for('static' , filename='/assets/border.png')}}" class="absolute  h-[589px]" style="z-index: -1;" />
+        <div class="w-[1200px] flex flex-wrap justify-center items-center]">
+       {% for i in options %}
+        <div class= " flex justify-center items-center flex-col [367px] h-[333px] m-[10px] mb-[50px]">
+            <img src="{{ url_for('static' , filename='/pics/'+i.imageid)}}" class="md:w-[364px] w-[188px] md:h-[260px] h-[128px] object-cover rounded-[20px]" />
+            <h1 class="w-[100%] text-center text-xl font-bold mr-[10px] text-[#051748] ">{{i.name}}</h1>
+            <hr class="w-[100%] bg-[#7C7C7C] mt-[10px] mb-[10px]"/>
+            <span class="text-[#7C7C7C]">
+                {{i.caption}}
+            </span>
+        </div>
+       {% endfor %}
+       </div>
+     </div>
+     <!-- pc -->
+     <div class="w-[100%] h-[450px] mt-[100px] mb-[100px] bg-[#9469340D] flex flex-col justify-center items-center">
+        <div class="w-[100%] flex justify-center items-center flex-col">
+            <img src="{{url_for('static' , filename='assets/vector.png')}}" class="w-[190px] md:w-auto" />
+        </div>
+        <div class="mt-[40px]">
+            <h1 class="md:w-[100%] w-[191px] text-center text-[20px] md:text-[36px] font-bold mr-[10px] text-[#051748]">
+                    استراحتی آرامش‌بخش، در نزدیکی حرم
+            </h1>
+        </div>
+        <div class="mt-[40px] w-[80%]">
+            <p class="text-center">
+                در هتل لوتوس پارسیان ، تنها چند قدم با حرم فاصله دارید. ما برای این لحظات معنوی شما، محیطی آرام، تمیز و مملوء از روحیه مهمان‌نوازی ایرانی فراهم کرده‌ایم. اینجا، جایی است که راحتی جسمی و سکون روحی همراه می‌شوند.
+            </p>
+        </div>
+     </div>
+     <!-- pc -->
+      <div class="w-[100%] flex flex-col justify-center items-center mt-[100px]">
+        <h1 class="w-[100%] text-center text-[14px] md:text-[36px] font-[700] mr-[10px] text-[#051748]">
+            اتاق های ما
+        </h1>
+     </div>
+     <div class="w-[100%] flex flex-wrap justify-center items-center mt-[80px]">
+        <div class="w-[1200px] flex flex-wrap justify-center items-center]">
+        {% for i in rooms %}
+         <div class= " flex justify-center items-center flex-col [367px] h-[333px] m-[10px] mb-[50px]">
+            <img src="{{ url_for('static' , filename='/pics/'+i.imageid)}}" class="md:w-[364px] w-[188px] md:h-[260px] h-[128px] object-cover rounded-[20px]" />
+            <h1 class="w-[100%] text-center text-xl font-bold mr-[10px] text-[#051748] ">{{i.name}}</h1>
+            <hr class="w-[100%] bg-[#7C7C7C] mt-[10px] mb-[10px]"/>
+            <span class="text-[#7C7C7C]">
+                {{i.caption}}
+            </span>
+        </div>
+        {% endfor %}
+        </div>
+     </div>
+     <!-- pc -->
+      <footer class="w-[100%] flex flex-col md:flex-row justify-center items-center pb-[40px] bg-[#9469340D] p-[10px] pt-[70px]" dir="rtl">
+        <div class="md:w-[25%] w-[100%]">
+            <h1 class="text-center text-3xl font-bold mr-[10px] text-[#051748] mb-[50px]">
+                هتل آپارتمان لوتوس پارسیان
+            </h1>
+            <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d193353.12103664078!2d-73.97735864999999!3d40.78088089999999!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2sus!4v1748525072505!5m2!1sen!2sus" width="600" height="450" class="w-[371px] h-[318px] rounded-md" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+        <div class="md:pr-[50px] md:w-[25%] w-[100%]">
+            <h1 class="text-right text-md font-bold mr-[10px] text-[#051748] mb-[50px]">
+                ارتباط با ما
+            </h1>
+            <div class="flex flex-col justify-start">
+                <span class="text-[#946934] font-bold">
+                    hello@facdustrian.com
+                </span>
+                <span class="text-[#946934] font-bold">
+                    +44123456789
+                </span>
+            </div>
+            <div class="flex w-[50%] justify-between items-center mt-[40px]">
+                <svg xmlns="http://www.w3.org/2000/svg" width="300" height="300" class="w-[20px] h-[20px]  text-[#946934]" viewBox="-2 -2 24 24"><path fill="currentColor" d="M19.959 11.719v7.379h-4.278v-6.885c0-1.73-.619-2.91-2.167-2.91c-1.182 0-1.886.796-2.195 1.565c-.113.275-.142.658-.142 1.043v7.187h-4.28s.058-11.66 0-12.869h4.28v1.824l-.028.042h.028v-.042c.568-.875 1.583-2.126 3.856-2.126c2.815 0 4.926 1.84 4.926 5.792M2.421.026C.958.026 0 .986 0 2.249c0 1.235.93 2.224 2.365 2.224h.028c1.493 0 2.42-.989 2.42-2.224C4.787.986 3.887.026 2.422.026zM.254 19.098h4.278V6.229H.254z"/></svg>
+                <svg xmlns="http://www.w3.org/2000/svg" width="300" height="300" class="w-[20px] h-[20px]  text-[#946934]" viewBox="0 0 24 24"><path fill="currentColor" d="M9.602 21.026v-7.274H6.818a.545.545 0 0 1-.545-.545V10.33a.545.545 0 0 1 .545-.545h2.773V7a4.547 4.547 0 0 1 4.86-4.989h2.32a.556.556 0 0 1 .557.546v2.436a.557.557 0 0 1-.557.545h-1.45c-1.566 0-1.867.742-1.867 1.833v2.413h3.723a.533.533 0 0 1 .546.603l-.337 2.888a.545.545 0 0 1-.545.476h-3.364v7.274a.96.96 0 0 1-.975.974h-1.937a.96.96 0 0 1-.963-.974"/></svg>
+                <svg xmlns="http://www.w3.org/2000/svg" width="300" height="300" class="w-[20px] h-[20px]  text-[#946934]" viewBox="0 0 24 24"><path fill="currentColor" d="M22.46 6c-.77.35-1.6.58-2.46.69c.88-.53 1.56-1.37 1.88-2.38c-.83.5-1.75.85-2.72 1.05C18.37 4.5 17.26 4 16 4c-2.35 0-4.27 1.92-4.27 4.29c0 .34.04.67.11.98C8.28 9.09 5.11 7.38 3 4.79c-.37.63-.58 1.37-.58 2.15c0 1.49.75 2.81 1.91 3.56c-.71 0-1.37-.2-1.95-.5v.03c0 2.08 1.48 3.82 3.44 4.21a4.2 4.2 0 0 1-1.93.07a4.28 4.28 0 0 0 4 2.98a8.52 8.52 0 0 1-5.33 1.84q-.51 0-1.02-.06C3.44 20.29 5.7 21 8.12 21C16 21 20.33 14.46 20.33 8.79c0-.19 0-.37-.01-.56c.84-.6 1.56-1.36 2.14-2.23"/></svg>
+            </div>
+        </div>
+        <div class="md:w-[25%] w-[100%]">
+            <h class="text-right text-md font-bold mr-[10px] text-[#051748] mb-[50px]">
+                نظرات خود را ارسال کنید
+            </h1>
+            <div class="flex justify-center items-center mt-[20px]">
+                <input class="w-[50%] rounded-2xl ring-1 ring-[#051748] p-[10px] ml-[5px]" placeholder="نام و نام خانوادگی" />
+                <input class="w-[50%] rounded-2xl ring-1 ring-[#051748] p-[10px] mr-[5px]" placeholder="ایمیل" />
+            </div>
+            <textarea class="w-[100%] h-[100px] mt-[10px] ring-1 right-[#051748] rounded-2xl resize-none"></textarea>
+            <div class="flex justify-end items-center w-[100%] mt-[5px]">
+            <button class="p-[10px] ring-2 bg-[#946934] text-[white] rounded-2xl w-[150px] cursor-pointer">
+                ارسال
+            </button>
+            </div>
+        </div>
+      </footer>
+  </body>
+  <script src={{url_for('static' , filename="/js/main.js")}}></script>
+</html>

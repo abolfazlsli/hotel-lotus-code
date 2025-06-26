@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>هتل آپارتمان لوتوس پارسیان</title>
+  <!-- <link rel="stylesheet" href="style.css" /> -->
+   <style>
+    * {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'Tahoma', sans-serif;
+}
+
+body {
+  background: #fff;
+  color: #333;
+  line-height: 1.6;
+}
+
+.container {
+  width: 90%;
+  max-width: 1200px;
+  margin: auto;
+}
+
+.header {
+  background: #fff;
+  border-bottom: 1px solid #ddd;
+  padding: 1rem 0;
+}
+
+.nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.nav ul {
+  list-style: none;
+  display: flex;
+  gap: 1rem;
+}
+
+.nav a {
+  text-decoration: none;
+  color: #333;
+  font-weight: bold;
+}
+
+.logo {
+  font-weight: bold;
+  color: #003366;
+}
+
+.hero {
+  position: relative;
+  text-align: center;
+}
+
+.hero-img {
+  width: 100%;
+  height: auto;
+}
+
+.search-box {
+  position: absolute;
+  bottom: 40px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #fff;
+  padding: 1rem;
+  display: flex;
+  border-radius: 10px;
+  box-shadow: 0 0 10px #ccc;
+}
+
+.search-box input {
+  padding: 0.5rem;
+  border: none;
+  outline: none;
+}
+
+.search-box button {
+  background: #a57c3f;
+  color: #fff;
+  border: none;
+  padding: 0.5rem 1rem;
+  margin-right: 0.5rem;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.hero-info {
+  margin-top: 1rem;
+  color: #555;
+}
+
+.features {
+  padding: 2rem 0;
+  text-align: center;
+}
+
+.feature-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+.feature-item img {
+  width: 100%;
+  border-radius: 8px;
+}
+
+.feature-item h3 {
+  margin-top: 0.5rem;
+}
+
+.intro {
+  background: #f9f9f9;
+  padding: 2rem 0;
+  text-align: center;
+}
+
+.rooms {
+  padding: 2rem 0;
+}
+
+.room-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+.room img {
+  width: 100%;
+  border-radius: 8px;
+}
+
+.room h3 {
+  margin-top: 0.5rem;
+  text-align: center;
+}
+
+.footer {
+  background: #003366;
+  color: #fff;
+  padding: 2rem 0;
+}
+
+.footer-content {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.contact-form form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.contact-form input,
+.contact-form textarea {
+  padding: 0.5rem;
+  border: none;
+  border-radius: 5px;
+}
+
+.contact-form button {
+  background: #a57c3f;
+  color: #fff;
+  padding: 0.5rem;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.socials a {
+  color: #fff;
+  text-decoration: none;
+}
+
+   </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header class="header">
+    <div class="container nav">
+      <nav>
+        <ul>
+          <li><a href="#">ارتباط با ما</a></li>
+          <li><a href="#">وبلاگ</a></li>
+          <li><a href="#">رزرو آنلاین</a></li>
+        </ul>
+      </nav>
+      <div class="logo">هتل لوتوس پارسیان</div>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <img src="images/hero.jpg" alt="نمای هتل و حرم" class="hero-img">
+    <div class="search-box">
+      <input type="text" placeholder="جستجوی اتاق..." />
+      <button>جستجو</button>
+    </div>
+    <div class="hero-info">
+      <p>تلفن: ۰۵۱۳۸۹۵۸۶۹۰ - ۰۹۰۵۰۰۰۰۰۸۸</p>
+      <p>آدرس: بین خیابان امام رضا ۱۲ و ۱۰</p>
+    </div>
+  </section>
+
+  <!-- امکانات -->
+  <section class="features container">
+    <h2>همه چیز برای استراحت شما فراهم شده</h2>
+    <div class="feature-grid">
+      <div class="feature-item">
+        <img src="images/pool.jpg" alt="استخر">
+        <h3>مجموعه آبی</h3>
+      </div>
+      <div class="feature-item">
+        <img src="images/restaurant.jpg" alt="رستوران">
+        <h3>رستوران‌های سلطانی</h3>
+      </div>
+      <div class="feature-item">
+        <img src="images/lobby.jpg" alt="لابی">
+        <h3>لابی و پذیرش</h3>
+      </div>
+      <div class="feature-item">
+        <img src="images/laundry.jpg" alt="لاندری">
+        <h3>لاندری</h3>
+      </div>
+      <div class="feature-item">
+        <img src="images/cafe.jpg" alt="کافه">
+        <h3>کافی‌شاپ</h3>
+      </div>
+      <div class="feature-item">
+        <img src="images/gym.jpg" alt="باشگاه">
+        <h3>باشگاه ورزشی</h3>
+      </div>
+    </div>
+  </section>
+
+  <!-- معرفی -->
+  <section class="intro">
+    <div class="container">
+      <h2>استراحتی آرامش‌بخش، در نزدیکی حرم</h2>
+      <p>در هتل لوتوس پارسیان، تنها چند قدم با حرم فاصله دارید. برای این لحظات معنوی شما، محیطی آرام، تمیز و صمیمی از روحیه مهمان‌نوازی ایرانی فراهم کرده‌ایم.</p>
+    </div>
+  </section>
+
+  <!-- اتاق‌ها -->
+  <section class="rooms container">
+    <h2>اتاق‌های ما</h2>
+    <div class="room-grid">
+      <div class="room">
+        <img src="images/qasr-tanzil.jpg" alt="قصر تنزیل">
+        <h3>قصر تنزیل</h3>
+      </div>
+      <div class="room">
+        <img src="images/shams-del.jpg" alt="شمس دل">
+        <h3>شمس دل</h3>
+      </div>
+      <div class="room">
+        <img src="images/qasr-family.jpg" alt="قصر خانوادگی">
+        <h3>قصر خانوادگی</h3>
+      </div>
+      <div class="room">
+        <img src="images/shams-tanzil.jpg" alt="شمس تنزیل">
+        <h3>شمس تنزیل</h3>
+      </div>
+      <div class="room">
+        <img src="images/shams-family.jpg" alt="شمس خانوادگی">
+        <h3>شمس خانوادگی</h3>
+      </div>
+    </div>
+  </section>
+
+  <!-- تماس -->
+  <footer class="footer">
+    <div class="container footer-content">
+      <div class="contact-form">
+        <h3>نظرات خود را ارسال کنید</h3>
+        <form>
+          <input type="text" placeholder="نام" />
+          <input type="text" placeholder="ایمیل" />
+          <textarea placeholder="پیام"></textarea>
+          <button type="submit">ارسال</button>
+        </form>
+      </div>
+      <div class="contact-info">
+        <h3>ارتباط با ما</h3>
+        <p>hello@facdustrion.com</p>
+        <p>+44123456789</p>
+        <div class="socials">
+          <a href="#">لینکدین</a> | <a href="#">اینس‍تاگرام</a> | <a href="#">فیسبوک</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>

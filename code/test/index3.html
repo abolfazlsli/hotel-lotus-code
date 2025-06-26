@@ -1,0 +1,674 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>لوتوس پارسیان</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Tahoma', Arial, sans-serif;
+            background-color: #f8f9fa;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header - exactly like the image */
+        .header {
+            background: white;
+            padding: 10px 0;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .nav-right {
+            display: flex;
+            gap: 15px;
+        }
+
+        .nav-btn {
+            padding: 8px 20px;
+            border: 1px solid #ddd;
+            background: white;
+            color: #666;
+            border-radius: 20px;
+            text-decoration: none;
+            font-size: 14px;
+            transition: all 0.3s;
+        }
+
+        .nav-btn:hover {
+            background: #f0f0f0;
+        }
+
+        .nav-center {
+            display: flex;
+            gap: 30px;
+            list-style: none;
+        }
+
+        .nav-center a {
+            text-decoration: none;
+            color: #666;
+            font-size: 14px;
+            font-weight: 500;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 18px;
+            font-weight: bold;
+            color: #2c5aa0;
+        }
+
+        .logo-icon {
+            width: 35px;
+            height: 35px;
+            background: linear-gradient(45deg, #4a90e2, #357abd);
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 16px;
+        }
+
+        /* Hero Section - exactly matching the image */
+        .hero {
+            position: relative;
+            height: 400px;
+            background: linear-gradient(135deg, #e8f4f8 0%, #ffeaa7 50%, #fab1a0 100%);
+            display: flex;
+            align-items: center;
+            overflow: hidden;
+        }
+
+        .hero-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: 
+                radial-gradient(circle at 15% 60%, rgba(72, 201, 176, 0.6) 0%, transparent 50%),
+                radial-gradient(circle at 35% 40%, rgba(255, 215, 0, 0.7) 0%, transparent 50%),
+                linear-gradient(45deg, transparent 60%, rgba(105, 105, 105, 0.8) 100%);
+        }
+
+        /* Mosque domes */
+        .dome-1 {
+            position: absolute;
+            left: 150px;
+            top: 120px;
+            width: 80px;
+            height: 80px;
+            background: #48c9b0;
+            border-radius: 50%;
+            opacity: 0.8;
+        }
+
+        .dome-1::after {
+            content: '';
+            position: absolute;
+            top: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 4px;
+            height: 30px;
+            background: gold;
+        }
+
+        .dome-2 {
+            position: absolute;
+            left: 300px;
+            top: 140px;
+            width: 60px;
+            height: 60px;
+            background: #f1c40f;
+            border-radius: 50%;
+            opacity: 0.9;
+        }
+
+        .dome-2::after {
+            content: '';
+            position: absolute;
+            top: -8px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 3px;
+            height: 25px;
+            background: #e74c3c;
+        }
+
+        /* Modern building */
+        .building {
+            position: absolute;
+            right: 100px;
+            top: 50px;
+            width: 60px;
+            height: 300px;
+            background: linear-gradient(to right, #95a5a6, #7f8c8d);
+            transform: skew(-5deg);
+        }
+
+        .building::before {
+            content: '';
+            position: absolute;
+            top: 20px;
+            left: 10px;
+            right: 10px;
+            bottom: 0;
+            background: repeating-linear-gradient(
+                to bottom,
+                #bdc3c7 0px,
+                #bdc3c7 15px,
+                #95a5a6 15px,
+                #95a5a6 30px
+            );
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 10;
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .hero-text {
+            color: white;
+            text-align: right;
+        }
+
+        .hero-text h1 {
+            font-size: 2.2rem;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .hero-text .phone {
+            font-size: 1.1rem;
+            margin-bottom: 20px;
+            opacity: 0.9;
+        }
+
+        .hero-text .address {
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+
+        .reserve-btn {
+            background: linear-gradient(45deg, #d4af37, #b8941f);
+            color: white;
+            padding: 12px 25px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: bold;
+            margin-top: 15px;
+            display: inline-block;
+            box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3);
+            transition: all 0.3s;
+        }
+
+        .reserve-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(212, 175, 55, 0.4);
+        }
+
+        /* Services Section - exactly like image */
+        .services {
+            padding: 60px 0;
+            background: white;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 1.8rem;
+            margin-bottom: 40px;
+            color: #333;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+            margin-top: 40px;
+        }
+
+        .service-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .service-image {
+            width: 100%;
+            height: 150px;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .pool-img { background: linear-gradient(45deg, #3498db, #2980b9); }
+        .restaurant-img { background: linear-gradient(45deg, #e67e22, #d35400); }
+        .gym-img { background: linear-gradient(45deg, #34495e, #2c3e50); }
+        .laundry-img { background: linear-gradient(45deg, #ecf0f1, #bdc3c7); }
+        .cafe-img { background: linear-gradient(45deg, #8b4513, #654321); }
+        .parking-img { background: linear-gradient(45deg, #2c3e50, #1a252f); }
+
+        .service-title {
+            padding: 15px;
+            text-align: center;
+            font-size: 1rem;
+            color: #333;
+        }
+
+        /* Comfort Section */
+        .comfort {
+            padding: 60px 0;
+            background: #f8f9fa;
+            text-align: center;
+        }
+
+        .comfort-icon {
+            width: 60px;
+            height: 60px;
+            background: #d4af37;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            color: white;
+            font-size: 24px;
+        }
+
+        /* Rooms Section */
+        .rooms {
+            padding: 60px 0;
+            background: white;
+        }
+
+        .rooms-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+            margin-top: 40px;
+        }
+
+        .room-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .room-image {
+            width: 100%;
+            height: 150px;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .vip-room { background: linear-gradient(45deg, #f8f9fa, #e9ecef); }
+        .deluxe-room { background: linear-gradient(45deg, #fff3cd, #ffeaa7); }
+        .presidential-room { background: linear-gradient(45deg, #d1ecf1, #bee5eb); }
+        .single-room { background: linear-gradient(45deg, #f8d7da, #f5c6cb); }
+        .family-room { background: linear-gradient(45deg, #d4edda, #c3e6cb); }
+        .triple-room { background: linear-gradient(45deg, #e2e3e5, #d6d8db); }
+
+        .room-info {
+            padding: 15px;
+            text-align: center;
+        }
+
+        .room-info h3 {
+            font-size: 1rem;
+            margin-bottom: 5px;
+            color: #333;
+        }
+
+        .room-info p {
+            font-size: 0.85rem;
+            color: #666;
+        }
+
+        /* Footer - exactly like image */
+        .footer {
+            background: #2c5aa0;
+            color: white;
+            padding: 50px 0;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+
+        .footer-left h2 {
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+        }
+
+        .contact-form {
+            background: rgba(255,255,255,0.1);
+            padding: 25px;
+            border-radius: 10px;
+            backdrop-filter: blur(5px);
+        }
+
+        .form-row {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 15px;
+        }
+
+        .form-group {
+            flex: 1;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            background: rgba(255,255,255,0.9);
+            font-size: 13px;
+        }
+
+        .form-group textarea {
+            height: 80px;
+            resize: vertical;
+        }
+
+        .submit-btn {
+            background: #d4af37;
+            color: white;
+            padding: 10px 25px;
+            border: none;
+            border-radius: 20px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: background 0.3s;
+        }
+
+        .footer-right {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .map-container {
+            background: rgba(255,255,255,0.1);
+            width: 100%;
+            height: 250px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 15px;
+        }
+
+        .location-links {
+            display: flex;
+            gap: 15px;
+        }
+
+        .location-links a {
+            color: white;
+            text-decoration: none;
+            font-size: 14px;
+            opacity: 0.8;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-center {
+                display: none;
+            }
+            
+            .hero-content {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .services-grid,
+            .rooms-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .footer-content {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header - exact match -->
+    <header class="header">
+        <div class="nav-container">
+            <div class="nav-right">
+                <a href="#" class="nav-btn">ورود</a>
+                <a href="#" class="nav-btn">ثبت نام</a>
+            </div>
+            <nav>
+                <ul class="nav-center">
+                    <li><a href="#contact">ارتباط با ما</a></li>
+                    <li><a href="#rooms">اتاق‌ها و ویلا</a></li>
+                    <li><a href="#services">درباره ما</a></li>
+                </ul>
+            </nav>
+            <div class="logo">
+                <div class="logo-icon">🏨</div>
+                لوتوس پارسیان
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section - exact visual match -->
+    <section class="hero">
+        <div class="hero-bg"></div>
+        <div class="dome-1"></div>
+        <div class="dome-2"></div>
+        <div class="building"></div>
+        
+        <div class="hero-content">
+            <div class="hero-text">
+                <h1>هتل آپارتمان لوتوس پارسیان</h1>
+                <div class="phone">۰۹۱۲۱۶۲۱-۰۹۰۲۶۰۰۰۰۰۰</div>
+                <div class="address">بین خیابان امیرکبیر شمالی و ۱۷</div>
+                <a href="#contact" class="reserve-btn">مجموعه آپارتمان</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services">
+        <div class="container">
+            <h2 class="section-title">همه چیز برای استراحت شما فراهم شده</h2>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-image pool-img"></div>
+                    <div class="service-title">مجموعه آبی</div>
+                </div>
+                <div class="service-card">
+                    <div class="service-image restaurant-img"></div>
+                    <div class="service-title">رستوران های متنوع</div>
+                </div>
+                <div class="service-card">
+                    <div class="service-image gym-img"></div>
+                    <div class="service-title">آمپر و پذیرایی</div>
+                </div>
+                <div class="service-card">
+                    <div class="service-image laundry-img"></div>
+                    <div class="service-title">لندری</div>
+                </div>
+                <div class="service-card">
+                    <div class="service-image cafe-img"></div>
+                    <div class="service-title">کافی شاپ</div>
+                </div>
+                <div class="service-card">
+                    <div class="service-image parking-img"></div>
+                    <div class="service-title">پارکینگ ویژه</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Comfort Section -->
+    <section class="comfort">
+        <div class="container">
+            <div class="comfort-icon">🏛️</div>
+            <h2>استراحت آرامش‌بخش در نزدیکی حرم</h2>
+            <p>در هتل لوتوس پارسیان، تنها چند قدم با حرم فاصله دارید که امکان راحت رفتن فراهم است. تعالی و محاسبه و با رنگ مخلوط حلال پیشه که با رونق جذابیت زائران آشنا شوند سوخت حصارها کردیم، اما همیشه متکی به اهمیت گرقت است که انیست که گجعد کردیم آرامش خودتان را هدیه خودتان کنید.</p>
+        </div>
+    </section>
+
+    <!-- Rooms Section -->
+    <section class="rooms">
+        <div class="container">
+            <h2 class="section-title">اتاق های ما</h2>
+            <div class="rooms-grid">
+                <div class="room-card">
+                    <div class="room-image vip-room"></div>
+                    <div class="room-info">
+                        <h3>اتاق ویژه</h3>
+                        <p>اتاق های مجهز با امکانات کامل</p>
+                    </div>
+                </div>
+                <div class="room-card">
+                    <div class="room-image deluxe-room"></div>
+                    <div class="room-info">
+                        <h3>شخصی دلکس</h3>
+                        <p>اتاق های لوکس با ویو عالی</p>
+                    </div>
+                </div>
+                <div class="room-card">
+                    <div class="room-image presidential-room"></div>
+                    <div class="room-info">
+                        <h3>اتاق ریاست جمهوری</h3>
+                        <p>بالاترین سطح اقامت</p>
+                    </div>
+                </div>
+                <div class="room-card">
+                    <div class="room-image single-room"></div>
+                    <div class="room-info">
+                        <h3>اتاق تک</h3>
+                        <p>مناسب برای اقامت انفرادی</p>
+                    </div>
+                </div>
+                <div class="room-card">
+                    <div class="room-image family-room"></div>
+                    <div class="room-info">
+                        <h3>شخصی خانوادگی</h3>
+                        <p>مناسب برای خانواده ها</p>
+                    </div>
+                </div>
+                <div class="room-card">
+                    <div class="room-image triple-room"></div>
+                    <div class="room-info">
+                        <h3>شخصی تریپل</h3>
+                        <p>اتاق سه تخته مدرن</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer - exact match -->
+    <footer class="footer" id="contact">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-left">
+                    <h2>هتل آپارتمان لوتوس پارسیان</h2>
+                    <div class="contact-form">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <input type="text" placeholder="نام">
+                            </div>
+                            <div class="form-group">
+                                <input type="text" placeholder="نام خانوادگی">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <input type="tel" placeholder="شماره تماس">
+                        </div>
+                        <div class="form-group">
+                            <textarea placeholder="پیام"></textarea>
+                        </div>
+                        <button class="submit-btn">ارسال</button>
+                    </div>
+                </div>
+                <div class="footer-right">
+                    <div class="map-container">
+                        <div style="text-align: center; color: rgba(255,255,255,0.7);">
+                            <p>نقشه موقعیت</p>
+                            <p style="font-size: 12px; margin-top: 10px;">مشهد - خیابان امیرکبیر</p>
+                        </div>
+                    </div>
+                    <div class="location-links">
+                        <a href="#">نمایش روی نقشه</a>
+                        <a href="tel:09121621">تماس</a>
+                        <a href="#">مسیریابی</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Form submission
+        document.querySelector('.submit-btn').addEventListener('click', function(e) {
+            e.preventDefault();
+            alert('پیام شما با موفقیت ارسال شد!');
+        });
+    </script>
+</body>
+</html>

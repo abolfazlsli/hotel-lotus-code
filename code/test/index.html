@@ -1,0 +1,710 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>لوتوس پارسیان - رزرو هتل</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #f5f5f5;
+            color: #333;
+            direction: rtl;
+        }
+
+        /* Header */
+        .header {
+            background: white;
+            padding: 15px 30px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 18px;
+            font-weight: bold;
+            color: #2c5282;
+        }
+
+        .logo-icon {
+            width: 35px;
+            height: 35px;
+            background: linear-gradient(135deg, #4a90e2 0%, #357abd 100%);
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            font-size: 16px;
+        }
+
+        .nav-buttons {
+            display: flex;
+            gap: 8px;
+        }
+
+        .nav-btn {
+            padding: 8px 18px;
+            border: 1px solid #ddd;
+            background: white;
+            border-radius: 18px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 14px;
+            color: #666;
+        }
+
+        .nav-btn:hover {
+            background: #f8f9fa;
+            border-color: #bbb;
+        }
+
+        /* Hero Section */
+        .hero {
+            position: relative;
+            height: 400px;
+            background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), 
+                        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 400"><defs><linearGradient id="cityscape" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:%234a90e2;stop-opacity:1" /><stop offset="50%" style="stop-color:%23357abd;stop-opacity:1" /><stop offset="100%" style="stop-color:%232c5282;stop-opacity:1" /></linearGradient></defs><rect fill="url(%23cityscape)" width="1200" height="400"/><rect x="50" y="150" width="80" height="250" fill="%23ffffff" opacity="0.1"/><rect x="150" y="100" width="60" height="300" fill="%23ffffff" opacity="0.15"/><rect x="230" y="120" width="90" height="280" fill="%23ffffff" opacity="0.12"/><rect x="340" y="80" width="70" height="320" fill="%23ffffff" opacity="0.18"/><rect x="430" y="140" width="85" height="260" fill="%23ffffff" opacity="0.1"/><circle cx="600" cy="200" r="40" fill="%2300d4aa" opacity="0.6"/><circle cx="650" cy="180" r="25" fill="%23ffd700" opacity="0.8"/><rect x="800" y="50" width="100" height="350" fill="%23ffffff" opacity="0.2"/><rect x="920" y="90" width="80" height="310" fill="%23ffffff" opacity="0.15"/><rect x="1020" y="70" width="90" height="330" fill="%23ffffff" opacity="0.18"/></svg>');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+        }
+
+        .hero-overlay {
+            position: absolute;
+            bottom: 20px;
+            right: 30px;
+            background: rgba(0,0,0,0.6);
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-size: 12px;
+            color: white;
+        }
+
+        .hero-content {
+            text-align: center;
+            max-width: 900px;
+            padding: 0 20px;
+        }
+
+        .hero-title {
+            font-size: 24px;
+            margin-bottom: 15px;
+            font-weight: normal;
+        }
+
+        .hero-contact {
+            font-size: 14px;
+            margin-bottom: 25px;
+            opacity: 0.9;
+        }
+
+        /* Search Form */
+        .search-container {
+            background: rgba(139, 69, 19, 0.9);
+            padding: 15px 25px;
+            border-radius: 25px;
+            margin-top: 20px;
+            backdrop-filter: blur(10px);
+        }
+
+        .search-form {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            gap: 12px;
+            align-items: center;
+        }
+
+        .search-input {
+            padding: 8px 12px;
+            border: none;
+            border-radius: 15px;
+            font-size: 12px;
+            background: rgba(255,255,255,0.9);
+            text-align: center;
+        }
+
+        .search-btn {
+            padding: 8px 20px;
+            background: #8b4513;
+            color: white;
+            border: none;
+            border-radius: 15px;
+            cursor: pointer;
+            font-size: 12px;
+            font-weight: bold;
+        }
+
+        .search-btn:hover {
+            background: #7a3c11;
+        }
+
+        /* Section Titles */
+        .section {
+            max-width: 1200px;
+            margin: 50px auto;
+            padding: 0 30px;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 20px;
+            margin-bottom: 35px;
+            color: #333;
+            font-weight: normal;
+        }
+
+        /* Facilities Grid */
+        .facilities-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+            margin-bottom: 40px;
+        }
+
+        .facility-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 3px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .facility-card:hover {
+            transform: translateY(-3px);
+        }
+
+        .facility-image {
+            height: 150px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .facility-image.pool {
+            background: linear-gradient(45deg, #4a90e2, #357abd);
+        }
+
+        .facility-image.restaurant {
+            background: linear-gradient(45deg, #d4a574, #c19956);
+        }
+
+        .facility-image.business {
+            background: linear-gradient(45deg, #666, #888);
+        }
+
+        .facility-image.gym {
+            background: linear-gradient(45deg, #2c5282, #4a90e2);
+        }
+
+        .facility-image.coffee {
+            background: linear-gradient(45deg, #8b4513, #a0522d);
+        }
+
+        .facility-image.conference {
+            background: linear-gradient(45deg, #444, #666);
+        }
+
+        .facility-image::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 48px;
+        }
+
+        .facility-image.pool::before { content: '🏊‍♂️'; }
+        .facility-image.restaurant::before { content: '🍽️'; }
+        .facility-image.business::before { content: '💼'; }
+        .facility-image.gym::before { content: '🏋️‍♂️'; }
+        .facility-image.coffee::before { content: '☕'; }
+        .facility-image.conference::before { content: '🏢'; }
+
+        .facility-content {
+            padding: 15px;
+            text-align: center;
+        }
+
+        .facility-title {
+            font-size: 14px;
+            color: #333;
+            font-weight: normal;
+        }
+
+        /* About Section */
+        .about-section {
+            background: white;
+            padding: 40px 30px;
+            text-align: center;
+        }
+
+        .about-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .about-title {
+            font-size: 20px;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        .about-text {
+            font-size: 14px;
+            line-height: 1.8;
+            color: #666;
+            margin-bottom: 30px;
+        }
+
+        /* Rooms Grid */
+        .rooms-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+        }
+
+        .room-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 3px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .room-card:hover {
+            transform: translateY(-3px);
+        }
+
+        .room-image {
+            height: 140px;
+            background: linear-gradient(45deg, #f0f0f0, #e0e0e0);
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .room-image.single { background: linear-gradient(45deg, #e8f4f8, #d4edda); }
+        .room-image.deluxe { background: linear-gradient(45deg, #fff3cd, #ffeaa7); }
+        .room-image.family { background: linear-gradient(45deg, #f8d7da, #f5c6cb); }
+        .room-image.suite { background: linear-gradient(45deg, #d1ecf1, #bee5eb); }
+        .room-image.economy { background: linear-gradient(45deg, #e2e3e5, #d6d8db); }
+        .room-image.classic { background: linear-gradient(45deg, #fdf2e9, #fadbd8); }
+
+        .room-image::before {
+            content: '🛏️';
+            font-size: 40px;
+            opacity: 0.7;
+        }
+
+        .room-content {
+            padding: 15px;
+            text-align: center;
+        }
+
+        .room-title {
+            font-size: 14px;
+            color: #333;
+            margin-bottom: 8px;
+        }
+
+        .room-description {
+            font-size: 12px;
+            color: #999;
+            line-height: 1.4;
+        }
+
+        /* Contact Section */
+        .contact-section {
+            background: white;
+            padding: 50px 30px;
+        }
+
+        .contact-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: start;
+        }
+
+        .contact-info h2 {
+            font-size: 20px;
+            margin-bottom: 25px;
+            color: #333;
+            font-weight: normal;
+        }
+
+        .contact-form {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+        }
+
+        .contact-input {
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-size: 14px;
+            background: white;
+        }
+
+        .contact-textarea {
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-size: 14px;
+            background: white;
+            min-height: 80px;
+            resize: vertical;
+        }
+
+        .contact-btn {
+            padding: 12px 30px;
+            background: #8b4513;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 14px;
+            align-self: flex-start;
+        }
+
+        .contact-btn:hover {
+            background: #7a3c11;
+        }
+
+        .map-container {
+            background: #f5f5f5;
+            border-radius: 15px;
+            height: 300px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #666;
+            font-size: 16px;
+            border: 1px solid #e0e0e0;
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .header {
+                padding: 10px 15px;
+            }
+
+            .header-content {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            .nav-buttons {
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 5px;
+            }
+
+            .nav-btn {
+                padding: 6px 12px;
+                font-size: 12px;
+            }
+
+            .hero {
+                height: 300px;
+                padding: 0 15px;
+            }
+
+            .hero-title {
+                font-size: 20px;
+            }
+
+            .search-container {
+                padding: 12px 15px;
+            }
+
+            .search-form {
+                grid-template-columns: 1fr;
+                gap: 8px;
+            }
+
+            .section {
+                padding: 0 15px;
+                margin: 30px auto;
+            }
+
+            .facilities-grid,
+            .rooms-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .contact-content {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero-title {
+                font-size: 18px;
+            }
+
+            .hero-contact {
+                font-size: 12px;
+            }
+
+            .section-title {
+                font-size: 18px;
+            }
+
+            .facility-image,
+            .room-image {
+                height: 120px;
+            }
+
+            .map-container {
+                height: 200px;
+            }
+        }
+
+        @media (min-width: 769px) and (max-width: 1024px) {
+            .facilities-grid,
+            .rooms-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .search-form {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="header-content">
+            <div class="logo">
+                <div class="logo-icon">🏨</div>
+                لوتوس پارسیان
+            </div>
+            <div class="nav-buttons">
+                <button class="nav-btn">پیج اصلی</button>
+                <button class="nav-btn">وبلاگ</button>
+                <button class="nav-btn">رزرو اتاق ها</button>
+                <button class="nav-btn">ارتباط با ما</button>
+            </div>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="hero-overlay">بین شهرهای ایرانی شهر مشهد ۱۴ مرداد ۹۸</div>
+        <div class="hero-content">
+            <h1 class="hero-title">مجموعه اتاق</h1>
+            <div class="hero-contact">۰۹۱۲۱۶۴۵۶۷۸ - ۰۹۱۲۴۴۳۴۵۶۷۸</div>
+            
+            <div class="search-container">
+                <form class="search-form">
+                    <input type="text" class="search-input" placeholder="مقصد یا نام هتل">
+                    <input type="date" class="search-input" value="1403/08/15">
+                    <input type="date" class="search-input" value="1403/08/17">
+                    <select class="search-input">
+                        <option>۲ نفر</option>
+                        <option>۱ نفر</option>
+                        <option>۳ نفر</option>
+                        <option>۴ نفر</option>
+                    </select>
+                    <select class="search-input">
+                        <option>۱ اتاق</option>
+                        <option>۲ اتاق</option>
+                        <option>۳ اتاق</option>
+                    </select>
+                    <button type="submit" class="search-btn">جستجو</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <h2 class="section-title">همه چیز برای استراحت شما فراهم شده</h2>
+        <div class="facilities-grid">
+            <div class="facility-card">
+                <div class="facility-image pool"></div>
+                <div class="facility-content">
+                    <h3 class="facility-title">مجموعه آبی</h3>
+                </div>
+            </div>
+            <div class="facility-card">
+                <div class="facility-image restaurant"></div>
+                <div class="facility-content">
+                    <h3 class="facility-title">رستوران های معتبر</h3>
+                </div>
+            </div>
+            <div class="facility-card">
+                <div class="facility-image business"></div>
+                <div class="facility-content">
+                    <h3 class="facility-title">اتاق و کافی شاپ</h3>
+                </div>
+            </div>
+            <div class="facility-card">
+                <div class="facility-image gym"></div>
+                <div class="facility-content">
+                    <h3 class="facility-title">باشگاه ورزشی</h3>
+                </div>
+            </div>
+            <div class="facility-card">
+                <div class="facility-image coffee"></div>
+                <div class="facility-content">
+                    <h3 class="facility-title">کافی شاپ</h3>
+                </div>
+            </div>
+            <div class="facility-card">
+                <div class="facility-image conference"></div>
+                <div class="facility-content">
+                    <h3 class="facility-title">سالن کنفرانس</h3>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="about-section">
+        <div class="about-content">
+            <h2 class="about-title">استراحت آرامش‌بخش در نزدیکی حرم</h2>
+            <p class="about-text">
+                در هتل لوتوس پارسیان، تجربه اقامتی فراموش نشدنی در قلب مشهد پیش شما در انتظار گذاشتنی سامت میومونت. نزدیکی محل تازید نی سن سی‌حضوری حلال بین کاربران تعلی کنیا. 
+                خانین فرکیته کنندگان اینترنت کشف حقیقت میباشند که در اختیار آنها است و هر کسی بهتا سال پار بست. آنیت مرات است ملا بات بدر شر که دلی.
+            </p>
+        </div>
+    </section>
+
+    <section class="section">
+        <h2 class="section-title">اتاق های ما</h2>
+        <div class="rooms-grid">
+            <div class="room-card">
+                <div class="room-image single"></div>
+                <div class="room-content">
+                    <h3 class="room-title">اتاق تک</h3>
+                    <p class="room-description">مناسب برای یک نفر با امکانات کامل</p>
+                </div>
+            </div>
+            <div class="room-card">
+                <div class="room-image deluxe"></div>
+                <div class="room-content">
+                    <h3 class="room-title">سوئیت دلوکس</h3>
+                    <p class="room-description">اتاق لوکس با امکانات ویژه</p>
+                </div>
+            </div>
+            <div class="room-card">
+                <div class="room-image family"></div>
+                <div class="room-content">
+                    <h3 class="room-title">اتاق خانوادگی</h3>
+                    <p class="room-description">مناسب برای خانواده با کودکان</p>
+                </div>
+            </div>
+            <div class="room-card">
+                <div class="room-image suite"></div>
+                <div class="room-content">
+                    <h3 class="room-title">سوئیت خانوادگی</h3>
+                    <p class="room-description">فضای بزرگ برای خانواده</p>
+                </div>
+            </div>
+            <div class="room-card">
+                <div class="room-image economy"></div>
+                <div class="room-content">
+                    <h3 class="room-title">اتاق اقتصادی</h3>
+                    <p class="room-description">گزینه مقرون به صرفه</p>
+                </div>
+            </div>
+            <div class="room-card">
+                <div class="room-image classic"></div>
+                <div class="room-content">
+                    <h3 class="room-title">اتاق کلاسیک</h3>
+                    <p class="room-description">طراحی کلاسیک و راحت</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="contact-section">
+        <div class="contact-content">
+            <div class="contact-info">
+                <h2>هتل آپارتمان لوتوس پارسیان</h2>
+                <form class="contact-form">
+                    <div class="form-row">
+                        <input type="text" class="contact-input" placeholder="نام و نام خانوادگی">
+                        <input type="tel" class="contact-input" placeholder="شماره تماس">
+                    </div>
+                    <input type="email" class="contact-input" placeholder="آدرس ایمیل">
+                    <textarea class="contact-textarea" placeholder="پیام شما..."></textarea>
+                    <button type="submit" class="contact-btn">ارسال</button>
+                </form>
+            </div>
+            <div class="map-container">
+                🗺️ نمایش موقعیت روی نقشه
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // Form submissions
+        document.querySelector('.search-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('جستجو انجام شد!');
+        });
+
+        document.querySelector('.contact-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('پیام شما ارسال شد!');
+        });
+
+        // Navigation
+        document.querySelectorAll('.nav-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                alert('انتقال به: ' + this.textContent);
+            });
+        });
+
+        // Card hover effects
+        document.querySelectorAll('.facility-card, .room-card').forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-5px)';
+            });
+            
+            card.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0)';
+            });
+        });
+    </script>
+</body>
+</html>
