@@ -83,6 +83,12 @@ def login_required(f):
         return f(*args, **kwargs)
     return decorated_function
 
+
+@app.route("/admin")
+@login_required
+def adminhome () :
+    return redirect("/admin/dashboard")
+
 @app.route("/admin/addoption", methods=["GET", "POST"])
 @login_required
 def addoption():
