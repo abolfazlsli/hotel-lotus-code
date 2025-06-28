@@ -176,7 +176,7 @@
      </div>
      <div class="w-[100%] flex justify-center items-center">
      <div class="w-[1277px] relative flex flex-wrap justify-center items-center mt-[80px] ring-1 ring-[#946934]">
-        <div class="w-[1200px] flex flex-wrap justify-center items-center]">
+        <div class="w-[1200px] flex flex-wrap justify-center items-center rounded-2xl">
        {% for i in options %}
         <div class= " flex justify-center items-center flex-col [367px] h-[333px] m-[10px] mb-[50px]">
             <img src="{{ url_for('static' , filename='/pics/'+i.imageid)}}" class="md:w-[364px] w-[188px] md:h-[260px] h-[128px] object-cover rounded-[20px]" />
@@ -214,7 +214,7 @@
      </div>
      <div class="w-[100%] flex justify-center items-center mb-[100px]">
      <div class="w-[1277px] relative flex flex-wrap justify-center items-center mt-[80px] ring-1 ring-[#946934]">
-        <div class="w-[1200px] flex flex-wrap justify-center items-center]">
+        <div class="w-[1200px] flex flex-wrap justify-center items-center rounded-2xl">
        {% for i in rooms %}
         <div class= " flex justify-center items-center flex-col [367px] h-[333px] m-[10px] mb-[50px]">
             <img src="{{ url_for('static' , filename='/pics/'+i.imageid)}}" class="md:w-[364px] w-[188px] md:h-[260px] h-[128px] object-cover rounded-[20px]" />
