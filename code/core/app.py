@@ -255,7 +255,16 @@ def login():
     return render_template("login.html")
 
 
-
+@app.route("/setupadmin" , methods = ["GET" , "POST"])
+def setupAddmin () :
+    if request.method == "GET" :
+        return render_template("createRoot.html")
+    else : 
+        data = request.form
+        admin = Admins(data.get("phone") , data.get("phone") , data.get("password"))
+        db.session.add(admin)
+        db.session.commit()
+        return redirect("/admin")
 
 @app.route("/")
 def homePage () :
