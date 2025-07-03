@@ -100,7 +100,7 @@ def addoption():
         filefild = FileManager(file.filename , digtitalfilename)
         db.session.add(filefild)
         db.session.commit()
-        file.save(f"./core/static/pics/{digtitalfilename}.{file.filename.split(".")[-1]}")
+        file.save(f"./static/pics/{digtitalfilename}.{file.filename.split(".")[-1]}")
         if not name:
             return render_template("addoption.html", error="Option name is required.")
 
@@ -127,7 +127,7 @@ def addroom():
         filefild = FileManager(file.filename , digtitalfilename)
         db.session.add(filefild)
         db.session.commit()
-        file.save(f"./core/static/pics/{digtitalfilename}.{file.filename.split(".")[-1]}")
+        file.save(f"./static/pics/{digtitalfilename}.{file.filename.split(".")[-1]}")
         if not name:
             return render_template("addroom.html", error="Room name is required.")
         try:
@@ -148,7 +148,7 @@ def addroom():
 def deloption(oid):
     option = Options.query.filter_by(id = oid)
     try:
-        os.remove("./core/static/pics/" + option.first().imageid)
+        os.remove("./static/pics/" + option.first().imageid)
     except:
         pass
     option.delete()
@@ -165,8 +165,8 @@ def editroom(oid):
         newImageID = generateDigitalIds()
         room.first().name = data.get("name")
         room.first().caption = data.get("caption")
-        files.get("imageid").save("./core/static/pics" + f"{newImageID}.{files.get("imageid").filename.split(".")[-1]}")
-        os.remove("./core/static/pic/" + room.first().imageid)
+        files.get("imageid").save("./static/pics" + f"{newImageID}.{files.get("imageid").filename.split(".")[-1]}")
+        os.remove("./static/pic/" + room.first().imageid)
         room.first().imageid = f"{newImageID}.{files.get("imageid").filename.split(".")[-1]}"
         db.session.commit()
         return redirect("/admin/dashboard")
@@ -190,10 +190,10 @@ def editoption(oid):
         if files.get("imageid") and files.get("imageid").filename != "":
             ext = files.get("imageid").filename.split(".")[-1]
             new_filename = f"{new_image_id}.{ext}"
-            files.get("imageid").save(f"./core/static/pics/{new_filename}")
+            files.get("imageid").save(f"./static/pics/{new_filename}")
             
             try:
-                os.remove(f"./core/static/pics/{option.first().imageid}")
+                os.remove(f"./static/pics/{option.first().imageid}")
             except:
                 pass
 
@@ -213,7 +213,7 @@ def editoption(oid):
 def delroom(oid):
     option = Room.query.filter_by(id = oid)
     try:
-        os.remove("./core/static/pics/" + option.first().imageid)
+        os.remove("./static/pics/" + option.first().imageid)
     except:
         pass
     option.delete()
@@ -277,5 +277,8 @@ with app.app_context():
 
 
 
+
+
+
 if __name__ == "__main__":
-    app.run(debug=True , port=8080 , host="0.0.0.0")
+    app.run(debug=True , port=80 , host="0.0.0.0")
