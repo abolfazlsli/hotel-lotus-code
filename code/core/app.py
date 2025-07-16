@@ -166,7 +166,7 @@ def editroom(oid):
         room.first().name = data.get("name")
         room.first().caption = data.get("caption")
         files.get("imageid").save("./static/pics" + f"{newImageID}.{files.get("imageid").filename.split(".")[-1]}")
-        os.remove("./static/pic/" + room.first().imageid)
+        # os.remove("./static/pic/" + room.first().imageid)
         room.first().imageid = f"{newImageID}.{files.get("imageid").filename.split(".")[-1]}"
         db.session.commit()
         return redirect("/admin/dashboard")
