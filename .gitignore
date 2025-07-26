@@ -21,4 +21,5 @@ instance/
 # Optional: ignore uploaded files or temp data
 *.log
 *.sqlite3
+*.db
 uploads/
