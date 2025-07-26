@@ -85,7 +85,7 @@
     <!-- phone -->
         <div class="w-[100%] md:hidden flex justify-center items-center mt-[15px] relative" >
         <div class="w-[80%] h-[80%] flex justify-center items-center">
-            <img src="{{url_for('static' , filename='assets/mainphone.png')}}" class="rounded-[20px] w-[100%] h-[100%]" />
+            <img src="{{url_for('static' , filename='assets/mainimage.png')}}" class="rounded-[20px] w-[100%] h-[100%]" />
         </div>
         <div class="w-[75%] h-[fit-content] pt-[10px] pb-[10px] pr-[16px] pl-[16px] bg-[#ffffffcf] shadow-xl absolute rounded-2xl bottom-[-100px] backdrop-blur-sm flex justify-center flex-col" dir="rtl" >
             <div class="flex justify-center items-center w-[100%]">
@@ -98,7 +98,9 @@
                     </div>
                     <div class="w-[100%] flex justify-start items-center" dir="rtl">
                         <span class="mr-[5px] text-[12px] font-bold w-[60%]">
-                            بین خیابان امام رضا 10 و 12
+                            {% for addr in address %}
+                                {{addr.addres}}
+                            {% endfor %}
                         </span>
                     </div>
                 </div>
@@ -113,9 +115,9 @@
                     </div>
                     <div class="w-[100%] flex justify-start items-center" dir="rtl">
                         <span class="mr-[5px] text-[12px] font-bold w-[60%]">
-                            (051) 38 38 12 24-34
-                            09155800737
-                            09353666731
+                            {% for phone in phones %}
+                            {{ phone.phone }}
+                            {% endfor %}
                         </span>
                     </div>
                 </div>
@@ -156,7 +158,9 @@
                 </div>
                 <div class="w-[50%] flex justify-start items-center" dir="rtl">
                     <span class="mr-[28px] text-nowrap">
-                        565989569-09050000088
+                        {% for phone in phones %}
+                            {{ phone }}
+                        {% endfor %}
                     </span>
                 </div>
             </div>
@@ -249,17 +253,12 @@
                     info@taplotus.ir
                 </span>
                 <span class="text-[#946934] font-bold">
-                    <a href="tel:05138381224">
-                    (051) 38 38 12 24-34
-                    </a>
+                    {% for phone in phones %}
+                        <a href="tel:{{phone.phone}}">
+                            {{ phone.phone }}
+                        </a>
                     <br/>
-                    <a href="tel:09155800737">
-                        09155800737
-                    </a>
-                    <br/>
-                    <a href="tel:09353666731">
-                        09353666731
-                    </a>
+                    {% endfor %}
                 </span>
             </div>
             <div class="flex w-[50%] justify-between items-center mt-[40px]">
