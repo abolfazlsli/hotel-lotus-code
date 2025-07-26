@@ -350,6 +350,14 @@ def setupAddmin () :
         db.session.commit()
         return redirect("/admin")
 
+
+
+@app.route("/admin/logout")
+@login_required
+def logout() :
+    session.clear()
+    return redirect("/")
+
 @app.route("/")
 def homePage () :
     rooms =Room.query.all()
