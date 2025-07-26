@@ -1,0 +1,24 @@
+# Ignore Python cache and environment files
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+env/
+venv/
+ENV/
+.venv/
+
+# Ignore environment variable files
+.env
+*.env
+
+# Ignore instance folder
+instance/
+
+# Ignore only static/assets but not all static
+./code/core/static/assets/
+
+# Optional: ignore uploaded files or temp data
+*.log
+*.sqlite3
+uploads/

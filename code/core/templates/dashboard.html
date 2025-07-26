@@ -20,12 +20,36 @@
         <div class="col">
             <a href="/admin/addroom" class="btn btn-primary">Add Room</a>
             <a href="/admin/addoption" class="btn btn-secondary">Add Option</a>
+            <a href="/admin/phoneadder" class="btn btn-secondary">Add Phone</a>
+            <a href="/admin/addresadder" class="btn btn-secondary">Add Address</a>
+            <a href="/admin/editbanner" class="btn btn-secondary">Edit Cover</a>
         </div>
     </div>
 
     <div class="row">
+        <div class="d-flex w-[100%]">
+                {% for addres in address %}
+                <div class="me-5 bg-secondary d-flex justify-content-center align-items-center rounded">
+                    <a href="/admin/deladdres/{{addres.id}}">
+                        <p class="text-white p-2 m-0">
+                            {{addres.addres}}
+                        </p>
+                    </a>
+                </div>
+                {% endfor %}
+                {% for phone in phones %}
+                <div class="me-5 bg-secondary d-flex justify-content-center align-items-center rounded">
+                    <a href="/admin/delphone/{{phone.id}}">
+                        <p class="text-white p-2 m-0">
+                            {{phone.phone}}
+                        </p>
+                    </a>
+                </div>
+                {% endfor %}
+            </div>
         <!-- Rooms Section -->
         <div class="col-md-6">
+            
             <h4>Rooms</h4>
             <ul class="list-group">
                 {% for room in rooms %}

@@ -61,6 +61,23 @@ class Options(db.Model):
         self.imageid = imageid
         self.caption = caption
 
+
+class LandingsPhone(db.Model):
+    __tablename__ = "landingphone"
+    id = db.Column(db.Integer, primary_key=True)
+    phone = db.Column(db.String)
+    def __init__(self , phone):
+        self.phone = phone
+
+class LandingAddres(db.Model):
+    __tablename__ = "landingaddres"
+    id = db.Column(db.Integer, primary_key=True)
+    addres = db .Column(db.String)
+    def __init__(self , addres):
+        self.addres = addres
+
+
+
 class Admins(db.Model):
     __tablename__ = 'admins'
     
@@ -88,6 +105,71 @@ def login_required(f):
 @login_required
 def adminhome () :
     return redirect("/admin/dashboard")
+
+
+@app.route("/admin/addresadder" , methods = ["GET" , "POST"])
+@login_required
+def addAdres () :
+    if request.method == "GET" :
+        return render_template("/addresAdder.html")
+    elif request.method == "POST" :
+        try:
+            addres = request.form.get("addres")
+            ad = LandingAddres(addres)
+            db.session.add(ad)
+            db.session.commit()
+            return render_template("/addresAdder.html" , message = "address added !")
+        except :
+            return render_template("/addresAdder.html" , error = "Cant add address !")
+    return ""
+
+@app.route("/admin/delphone/<id>" , methods = ["GET" , "POST"])
+@login_required
+def remphone(id):
+    phone = LandingsPhone.query.filter_by(id = id)
+    phone.delete()
+    db.session.commit()
+    return redirect("/admin/dashboard")
+
+
+
+@app.route("/admin/editbanner", methods=["GET", "POST"])
+@login_required
+def EditBanner():
+    if request.method == "GET":
+        return render_template("editcover.html")
+    elif request.method == "POST":
+        file = request.files.get("banner")
+        if file:
+            assets_folder = os.path.join(current_app.root_path, "static", "assets")
+            if not os.path.exists(assets_folder):
+                os.makedirs(assets_folder)
+            file.save(os.path.join(assets_folder, "mainimage.png"))
+            return redirect("/admin/editbanner")
+    return ""
+
+@app.route("/admin/deladdres/<id>" , methods = ["GET" , "POST"])
+@login_required
+def remaddres(id):
+    phone = LandingAddres.query.filter_by(id = id)
+    phone.delete()
+    db.session.commit()
+    return redirect("/admin/dashboard")
+
+@app.route("/admin/phoneadder" , methods=["GET" , 'POST'])
+@login_required
+def addPhone () :
+    if request.method == "GET":
+        return render_template("addingphone.html")
+    elif request.method == "POST":
+        try:
+            phone = LandingsPhone(request.form.get("phone"))
+            db.session.add(phone)
+            db.session.commit()
+            return render_template("addingphone.html" , message="adding phone sucess !")
+        except:
+            return render_template("addingphone.html" , error = "we have a problem in adding phone !")
+    return ""
 
 @app.route("/admin/addoption", methods=["GET", "POST"])
 @login_required
@@ -226,7 +308,9 @@ def delroom(oid):
 def dashboard():
     rooms = Room.query.all()
     options = Options.query.all()
-    return render_template("dashboard.html", rooms=rooms, options=options , str=str)
+    phones = LandingsPhone.query.all()
+    address = LandingAddres.query.all()
+    return render_template("dashboard.html", rooms=rooms, options=options , phones=phones , address = address , str=str)
 
 
 
@@ -266,11 +350,21 @@ def setupAddmin () :
         db.session.commit()
         return redirect("/admin")
 
+
+
+@app.route("/admin/logout")
+@login_required
+def logout() :
+    session.clear()
+    return redirect("/")
+
 @app.route("/")
 def homePage () :
     rooms =Room.query.all()
     options = Options.query.all()
-    return render_template("index.html" , rooms = rooms , options = options)
+    phones = LandingsPhone.query.all()
+    addr = LandingAddres.query.all()
+    return render_template("index.html" , rooms = rooms , options = options , phones = phones , address = addr)
 
 with app.app_context():
     db.create_all()
