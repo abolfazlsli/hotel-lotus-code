@@ -16,7 +16,7 @@ ENV/
 instance/
 
 # Ignore only static/assets but not all static
-static/assets/
+./code/core/static/assets/
 
 # Optional: ignore uploaded files or temp data
 *.log
