@@ -225,6 +225,12 @@ def addroom():
 
 
 
+@app.route("/room/<id>")
+def ShowRoom (id) :
+    room = Room.query.filter_by(id = id).first()
+    return render_template("showRoom.html" , room = room)
+
+
 @app.route("/admin/option/delete/<oid>")
 @login_required
 def deloption(oid):
