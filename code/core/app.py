@@ -231,6 +231,14 @@ def ShowRoom (id) :
     return render_template("showRoom.html" , room = room)
 
 
+
+
+@app.route("/option/<id>")
+def ShowOption (id) :
+    room = Options.query.filter_by(id = id).first()
+    return render_template("showRoom.html" , room = room)
+
+
 @app.route("/admin/option/delete/<oid>")
 @login_required
 def deloption(oid):
