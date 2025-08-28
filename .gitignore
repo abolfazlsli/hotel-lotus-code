@@ -22,4 +22,5 @@ instance/
 *.log
 *.sqlite3
 *.db
+instance
 uploads/
